@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- Meta Tags -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Shop</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="./images/logo.png" type="image/png">
+    </head>
     <title>Login Page</title>
 </head>
 <body>
     <header>
         <!-- Logo -->
+        <div class="logo" style="display: inline-flex;">
+            <img src="./images/logo.png" alt="Website Logo" style="width: 7%; height: 7%; margin-right: 10px">
+            <h1>The Shop</h1>
+        </div>
     </header>
-    <div>
+    <div class="links">
         <!-- Navigation Links -->
+        <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
     </div>
     <main>
         <!-- Login Section -->
+        <h2>Login</h2>
+        <form action="#" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+        <p>New user? <a href="#">Sign up here</a></p>
     </main>
     <footer>
         <!-- Footer Content -->
+        <p>&copy; 2023 The Shop, by Phoenix Bouma and Victor Gouttin, All rights reserved.</p>
     </footer>
 </body>
 </html>
