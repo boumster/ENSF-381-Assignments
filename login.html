@@ -27,15 +27,17 @@
             <!-- Login Section -->
             <h2>Login</h2>
             <form action="#" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required><br><br>
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br><br>
-
-                <input type="submit" value="Login">
+                <div class="login-container">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required><br><br>
+                </div>
+                <div class="login-container">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
+                </div>
+                <input type="submit" value="Login" class="login-submit">
             </form>
-            <p>New user? <a href="#">Sign up here</a></p>
+            <p class="signup">Don't have an account? <a href="#" class="signup-link">Sign up here</a></p>
         </section>
     </main>
     <footer>
