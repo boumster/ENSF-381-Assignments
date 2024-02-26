@@ -1,4 +1,4 @@
-/* Header */
+/* Header and General page styling*/
 
 * {
     box-sizing: border-box;
@@ -13,6 +13,12 @@ header {
     align-items: normal;
     color: white;
     width: 100%;
+}
+
+section {
+    background-color: #ddd;
+    padding: 20px;
+    margin: 20px;
 }
 
 header .logo {
@@ -79,11 +85,9 @@ header h1 {
 /* Products Page */
 
 .product-list {
-    background-color: #ddd;
     flex-wrap: wrap;
-    padding: 20px;
-    margin: 20px;
 }
+
 
 .product-list table {
     border-collapse: separate;
