@@ -6,6 +6,51 @@
     <title>Products</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="./images/logo.png" type="image/png">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addCartButtons = document.querySelectorAll('.add-cart');
+            const removeCartButtons = document.querySelectorAll('.remove-cart');
+            const shoppingCart = document.querySelector('.shopping-cart');
+            const cartItems = {};
+
+            addCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const product = button.parentElement;
+                    const productName = product.querySelector('h2').textContent;
+                    const productPrice = product.querySelector('.price').textContent;
+
+                    if (cartItems[productName]) {
+                        cartItems[productName].count++;
+                        const cartItem = document.querySelector(`[data-product="${productName}"]`);
+                        cartItem.querySelector('.cart-item-count').textContent = cartItems[productName].count;
+                    } else {
+                        cartItems[productName] = { count: 1 };
+                        const cartItem = document.createElement('div');
+                        cartItem.classList.add('cart-item');
+                        cartItem.setAttribute('data-product', productName);
+                        cartItem.innerHTML = `
+                            <p>${productName} - ${productPrice} - <span class="cart-item-count">1</span> <button class="remove-cart">Remove</button></p>
+                        `;
+                        shoppingCart.appendChild(cartItem);
+                    }
+                });
+            });
+
+            shoppingCart.addEventListener('click', event => {
+
+                const product = event.target.parentElement.parentElement;
+                const productName = product.getAttribute('data-product');
+                cartItems[productName].count--;
+
+                if (cartItems[productName].count === 0) {
+                    delete cartItems[productName];
+                    product.remove();
+                } else {
+                    product.querySelector('.cart-item-count').textContent = cartItems[productName].count;
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -78,6 +123,9 @@
                     </td>
                 </tr>
             </table>
+            <div class="shopping-cart">
+                <h1>Shopping Cart</h1>
+            </div>
         </section>
     </main>
     <footer>
