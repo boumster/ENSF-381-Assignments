@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Shop</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="./images/logo.png" type="image/png">
+    </head>
+    <title>Sign up Page</title>
+</head>
+<body>
+    <header>
+        <!-- Logo -->
+        <img src="./images/logo.png" alt="Website Logo" class="logo">
+        <h1>The Shop</h1>
+    </header>
+    <div class="links">
+        <!-- Navigation Links -->
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+    </div>
+    <main>
+        <section class="signup-section">
+            <form method="post" id="signup-form">
+                <div class="signup-container">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required><br><br>
+                </div>
+                <div class="signup-container">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
+                </div>
+                <div class="signup-container">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required><br><br>
+                </div>
+                <div class="signup-container">
+                    <label for="email">Email:</label>
+                    <div class="submit-container">
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <input type="submit" value="Signup" class="signup-submit">
+                    </div>
+                </div>
+            </form>
+            <script>
+                document.getElementById('signup-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    errors = document.querySelector('.error-message');
+                    errors.innerHTML = '';
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirm-password').value;
+                    const email = document.getElementById('email').value;
+                    if (username.length < 3 || username.length > 20){
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Username must be between 3 and 20 characters long.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (username[0].search(/[a-zA-Z]/) < 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Username must start with a letter.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (username.search(/[a-zA-Z0-9]/) < 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Username must contain only letters and numbers.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (username.search(/\s/) >= 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Username must not contain any spaces.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (password.length < 8) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Password must be at least 8 characters long.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (password.search(/[a-z]/) < 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Password must contain at least one lowercase letter.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (password.search(/[A-Z]/) < 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Password must contain at least one uppercase letter.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (password.search(/[0-9]/) < 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Password must contain at least one number.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (!/[!@#$%^&*()\-=+\[\]{}|;:'",.<>?/\\`~]/.test(password)) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Password must contain at least one special character: !@#$%^&*()-_=+[]{}|;:\'",.<>?/`~';
+                        errors.appendChild(errorItem);
+                    }
+                    if (password.search(/\s/) >= 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Password must not contain any spaces.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (password !== confirmPassword) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Passwords do not match.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (email.search(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/) < 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Invalid email address.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (email.search(/\s/) >= 0) {
+                        errorItem = document.createElement('p');
+                        errorItem.textContent = 'Email must not contain any spaces.';
+                        errors.appendChild(errorItem);
+                    }
+                    if (errors.innerHTML === '') {
+                        alert('Signup successful!');
+                    }
+                });
+            </script>
+        </section>
+        <div class="error-message">
+        </div>
+    </main>
+    <footer>
+        <!-- Footer Content -->
+        <p>&copy; 2023 The Shop, by Phoenix Bouma and Victor Gouttin, All rights reserved.</p>
+    </footer>
+</body>
+</html>
